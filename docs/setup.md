@@ -2,7 +2,7 @@
 
 # Set up your computer
 
-Do steps 1 to 6 once. Step 7 is optional.
+Do steps 1 to 6 once. Steps 7 and 8 are optional: use them if you work in VS Code or Spyder.
 
 1. [Open a terminal](#step-1--open-a-terminal)
 2. [Choose where your projects live](#step-2--choose-where-your-projects-live)
@@ -11,6 +11,7 @@ Do steps 1 to 6 once. Step 7 is optional.
 5. [Install git](#step-5--install-git)
 6. [Allow PowerShell to run scripts](#step-6--allow-powershell-to-run-scripts)
 7. [Optional: use VS Code](#step-7--optional-use-vs-code)
+8. [Optional: use Spyder](#step-8--optional-use-spyder)
 
 ## Good at git: quick checklist
 
@@ -23,7 +24,7 @@ Do steps 1 to 6 once. Step 7 is optional.
 > 5. The AWS CLI is installed and your keys are stored under a profile ([step 4](#step-4--store-your-storage-keys)).
 > 6. You have no stale `AWS_*` variables in your terminal: `Get-ChildItem Env:AWS*` shows nothing.
 >
-> Using VS Code? Also read [step 7](#step-7--optional-use-vs-code): it takes two minutes.
+> Using VS Code or Spyder? Also read [step 7](#step-7--optional-use-vs-code) or [step 8](#step-8--optional-use-spyder): each takes two minutes.
 
 ## Step 1 – Open a terminal
 
@@ -184,6 +185,36 @@ Then open the Extensions view (Ctrl+Shift+X) and install:
 The script permission from [step 6](#step-6--allow-powershell-to-run-scripts) applies inside VS Code too,
 because it's the same PowerShell.
 
+## Step 8 – Optional: use Spyder
+
+If you write your code in **Spyder**, you can keep it: point Spyder at your project's Python
+environment, and run git and DVC commands in PowerShell next to it.
+
+1. **Add Spyder's helper package to the project**, once, in PowerShell:
+
+   ```powershell
+   uv add --dev spyder-kernels
+   ```
+
+   If Spyder later says the version of `spyder-kernels` doesn't match, it names the version it
+   needs: install exactly that one, for example `uv add --dev "spyder-kernels==3.0.*"`.
+
+2. **Point Spyder at the project's Python.** In Spyder: *Tools → Preferences → Python interpreter
+   → Use the following Python interpreter*, and choose `.venv\Scripts\python.exe` inside your
+   project folder. Restart the console (*Consoles → Restart kernel*).
+
+3. **Run git and DVC in PowerShell**, opened in the project folder. Spyder runs your scripts;
+   PowerShell runs `git`, `uv run dvc repro` and the other commands.
+
+Two habits matter especially with Spyder:
+
+- **Don't rely on Spyder's working folder.** Start every path from the repository folder, as on
+  [page 4, section 5](4-existing-project.md#5-paths-that-work-on-every-computer). Then your scripts
+  run the same in Spyder, in PowerShell and in DVC.
+- **Don't commit the files Spyder creates**: an empty file with only a header, or the
+  `.spyproject` folder. The [`.gitignore` template](../templates/gitignore.txt) already ignores
+  `.spyproject`.
+
 ## Done
 
 New to git? Read [Git and uv basics](git-and-uv-basics.md) first. Then start the tutorial:
@@ -191,3 +222,4 @@ New to git? Read [Git and uv basics](git-and-uv-basics.md) first. Then start the
 
 ---
 
+← [Back to the start page](../README.md)

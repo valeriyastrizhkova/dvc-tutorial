@@ -64,3 +64,4 @@ Start the tutorial: [1. How DVC works](1-how-dvc-works.md).
 
 ---
 
+← [Back to the start page](../README.md)

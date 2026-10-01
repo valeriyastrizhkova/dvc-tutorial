@@ -1,0 +1,34 @@
+# dvc.yaml for the example project climate-price-paths, at the repository root.
+
+stages:
+  sector_prices:
+    cmd: python scripts/01_sector_prices.py
+    deps:
+    - scripts/01_sector_prices.py
+    - scripts/helpers.py
+    - data/raw/cpi_scenarios.xlsx
+    - data/raw/power_prices.xlsx
+    - data/raw/gas_prices.xlsx
+    - data/reference/sector_weights.xlsx
+    params:
+    - config.yaml:
+      - inputs
+      - sector_prices
+    outs:
+    - outputs/prices_by_sector.parquet
+
+  add_countries:
+    cmd: python scripts/02_add_countries.py
+    deps:
+    - scripts/02_add_countries.py
+    - scripts/helpers.py
+    - outputs/prices_by_sector.parquet
+    - data/reference/country_proxies.xlsx
+    params:
+    - config.yaml:
+      - add_countries
+    outs:
+    - outputs/prices_by_country.csv
+    metrics:
+    - metrics/coverage.json:
+        cache: false

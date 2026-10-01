@@ -3,6 +3,10 @@
 A step-by-step tutorial on keeping your data versioned and your results reproducible, with risk
 and rating pipelines built on DVC.
 
+**How to start:** read why it matters (2 minutes), [choose your track](#choose-your-track), do the
+[setup](docs/setup.md), and follow your track's links. Already convinced? Go straight to
+[Choose your track](#choose-your-track).
+
 ## Why data version control matters
 
 In finance, a number is only as good as your ability to explain where it came from.
@@ -43,25 +47,69 @@ data is often gigabytes of Excel, CSV and Parquet files, and git becomes very sl
 with files that size. **DVC** (Data Version Control) fills that gap: it gives data the same history
 that git gives code, and it runs your calculations as a pipeline that knows what to rerun.
 
-## The tutorial
+## Choose your track
 
-- **For you if** you run calculations on data, such as risk models, ratings or scenario analysis,
-  and you want results you can rebuild exactly, months later.
-- **You'll learn** DVC pipelines: first on a practice project, then in your own repository.
-- **Time:** about 4 hours, or 2 hours if you're good at git.
+The tutorial has two tracks. They share the same first pages, setup and reference pages: pick the
+one that fits your work, and follow its links. You can do the other one later.
 
-It has four pages:
+### Track 1: Clean up an existing project
 
-1. [How DVC works](docs/1-how-dvc-works.md) (10 minutes)
-2. [Practice project](docs/2-practice-project.md) (1 hour)
-3. [DVC in your own project](docs/3-your-own-project.md) (1 hour)
-4. [Good habits](docs/4-good-habits.md) (5 minutes)
+- **For you if** your project grew in a folder: scripts, Excel inputs and results, files named
+  `_V2` or `_final`, paths like `C:\Users\<name>\...`, or everything pushed to GitHub as it was.
+- **You'll learn** to turn it into a repository anyone on the team can run: a clean layout,
+  versioned data, a pipeline, and deliveries you can trace.
+- **Time:** about 3 hours, plus the time to move your own files.
+- **Pages:** [1](docs/1-how-dvc-works.md), [2](docs/2-practice-project.md) (steps 1 to 5 only),
+  [4](docs/4-existing-project.md), [5](docs/5-worked-example.md) and [6](docs/6-good-habits.md).
 
-**Before you start:** do the [setup steps](docs/setup.md). **New to git?** Also read
-[Git and uv basics](docs/git-and-uv-basics.md). It takes 15 minutes. "Good at git" means you
+**[Start track 1 →](docs/1-how-dvc-works.md)**
+
+### Track 2: Build DVC pipelines
+
+- **For you if** you're starting pipeline work, such as a risk model, ratings or scenario
+  analysis, and you want results you can rebuild exactly, months later.
+- **You'll learn** DVC pipelines: first on a practice project, then in a real repository with
+  shared storage, several pipelines, releases and automatic checks.
+- **Time:** about 2½ hours, or less if you're good at git.
+- **Pages:** [1](docs/1-how-dvc-works.md), [2](docs/2-practice-project.md),
+  [3](docs/3-your-own-project.md) and [6](docs/6-good-habits.md).
+
+**[Start track 2 →](docs/1-how-dvc-works.md)**
+
+### Not sure?
+
+```mermaid
+flowchart TD
+    Q{Do you already have a project<br/>with scripts and data files?}
+    Q -- "yes, and it grew in a folder" --> T1[Track 1<br/>Clean up an existing project]
+    Q -- "no, or it's already tidy" --> T2[Track 2<br/>Build DVC pipelines]
+```
+
+| Page | Track 1 | Track 2 |
+|---|---|---|
+| 1. [How DVC works](docs/1-how-dvc-works.md) (10 minutes) | ✓ | ✓ |
+| 2. [Practice project](docs/2-practice-project.md) (1 hour) | Steps 1 to 5 | ✓ |
+| 3. [DVC in your own project](docs/3-your-own-project.md) (1 hour) | | ✓ |
+| 4. [Bring an existing project into git and DVC](docs/4-existing-project.md) (1 hour) | ✓ | |
+| 5. [Worked example: from scripts to a pipeline](docs/5-worked-example.md) (45 minutes) | ✓ | |
+| 6. [Good habits](docs/6-good-habits.md) (10 minutes) | ✓ | ✓ |
+
+**Before you start, on both tracks:** do the [setup steps](docs/setup.md). **New to git?** Also
+read [Git and uv basics](docs/git-and-uv-basics.md). It takes 15 minutes. "Good at git" means you
 clone, commit, branch and open pull requests without thinking about it; if that's you, skip it.
 
-**[Start the tutorial →](docs/1-how-dvc-works.md)**
+## Going further
+
+Three pages for when you've finished your track, or when one of these situations is yours:
+
+- **[Track experiments with DVC](docs/experiments.md)** (45 minutes): you try many variations of a
+  model. Replace a copy of the script per idea with one script and its settings, and compare every
+  variation in one table.
+- **[Replace a home-made runner with DVC](docs/replace-a-runner.md)** (45 minutes): your project has
+  a `run_all.py` that runs everything in order. Let DVC do it, and rerun only what changed.
+- **[A pipeline owned by several people](docs/several-owners.md)** (30 minutes): parts of your
+  pipeline have different owners. Make the hand-offs safe, and send each change to the right
+  reviewer.
 
 ## Reference pages
 
@@ -78,7 +126,12 @@ clone, commit, branch and open pull requests without thinking about it; if that'
   The one difference: end continued lines with `\` instead of a backtick.)
 - Lines starting with `#` are comments: you don't type them.
 - Text in angle brackets, like `<commit-id>`, is a placeholder: replace it, brackets included.
+- Every page starts with a box: **who it's for**, **what you'll learn**, **how long it takes**, and
+  **what to read first**. Long pages then list their sections, and every tutorial page ends with
+  **In short**, a recap of what to remember.
 - Boxes marked **Good at git** or **New to git** tell you what to skip or read closely.
+- The line at the top of each page shows where you are, for example
+  *Home › Track 1: Clean up an existing project › Page 4*.
 
 ---
 

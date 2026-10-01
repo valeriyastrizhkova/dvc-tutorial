@@ -1,0 +1,21 @@
+# config.yaml for the example project climate-price-paths.
+# Every file name and setting the scripts use lives here, not in the code.
+
+inputs:
+  cpi:     {file: data/raw/cpi_scenarios.xlsx,          sheet: CPI}
+  power:   {file: data/raw/power_prices.xlsx,           sheet: Prices}
+  gas:     {file: data/raw/gas_prices.xlsx,             sheet: Prices}
+  weights: {file: data/reference/sector_weights.xlsx,   sheet: Weights}
+
+sector_prices:
+  base_year: 2025
+  output: outputs/prices_by_sector.parquet
+
+add_countries:
+  proxies: {file: data/reference/country_proxies.xlsx, sheet: Proxies}
+  output: outputs/prices_by_country.csv
+
+publish:
+  file: outputs/prices_by_country.csv
+  bucket: your-company-bucket
+  prefix: climate-price-paths/deliveries

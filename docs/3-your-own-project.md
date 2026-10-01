@@ -1,6 +1,25 @@
-[Home](../README.md) › Page 3 of 4
+[Home](../README.md) › Track 2: Build DVC pipelines › Page 3
 
 # 3. DVC in your own project
+
+> **For you if** you're on track 2, and you want to use DVC in a real repository: shared storage, credentials, several people, and releases that must be rebuilt months later.
+>
+> **You'll learn** to add DVC to a repository, write a reliable pipeline, run several pipelines side by side, release versions, and check them automatically.
+>
+> **Time:** about 1 hour.
+>
+> **Before this page:** the whole [practice project](2-practice-project.md).
+
+**On this page:**
+
+- [1. The example project: greenfin-risk](#1-the-example-project-greenfin-risk)
+- [2. Add DVC to an existing repository](#2-add-dvc-to-an-existing-repository)
+- [3. Write the pipeline](#3-write-the-pipeline)
+- [4. Several pipelines in one repository](#4-several-pipelines-in-one-repository)
+- [5. Everyday tasks](#5-everyday-tasks)
+- [6. Releases and old versions](#6-releases-and-old-versions)
+- [7. Automatic checks](#7-automatic-checks)
+- [8. Checklist for a new stage](#8-checklist-for-a-new-stage)
 
 The practice project had three stages on a laptop. A real financial project has more stages,
 shared cloud storage, credentials, several people, and releases that must be reproducible months
@@ -344,6 +363,13 @@ run this check on release branches only, since feature branches are expected to 
 4. `uv run tools/run.py <pipeline> dry` shows the new stage in the right place.
 5. Run it, check the metrics, and commit according to your team's rule (section 5).
 
+## In short
+
+- **One remote per pipeline**, with your credentials kept outside git (an AWS profile or a `.env`).
+- **A reliable stage** lists exactly what it reads, depends on settings key by key, pins its downloads, and keeps small results as metrics.
+- **Several pipelines in one repository** need a wrapper, so each command hits the right pipeline and storage.
+- **Agree on a commit rule, tag every release, and let a check run on every pull request.**
+
 ---
 
-← [Previous: Practice project](2-practice-project.md) · [Next: Good habits](4-good-habits.md) →
+← [Previous: Practice project](2-practice-project.md) · [Next: Good habits](6-good-habits.md) →

@@ -1,21 +1,23 @@
-[Home](../README.md) › Page 1 of 4
+[Home](../README.md) › Both tracks › Page 1
 
 # 1. How DVC works
 
-**For you if** you run calculations on data, such as risk models, ratings or scenario analysis,
-and you want results you can rebuild exactly, months later.
+> **For you if** you're new to DVC, on either track. This page explains the ideas; the next one puts them into practice.
+>
+> **You'll learn** the five ideas behind DVC: where data and code live, hashes, `dvc.yaml`, `dvc.lock`, and the cache and remote.
+>
+> **Time:** about 10 minutes.
+>
+> **Before this page:** steps 1 to 6 of [Setup](setup.md). New to git? Also read [Git and uv basics](git-and-uv-basics.md).
 
-The tutorial has four pages:
+This page is the start of both tracks:
 
-1. **How DVC works** (this page, 10 minutes)
-2. [Practice project](2-practice-project.md) (1 hour)
-3. [DVC in your own project](3-your-own-project.md) (1 hour)
-4. [Good habits](4-good-habits.md) (5 minutes)
+- **Track 1, clean up an existing project:** this page, the [practice project](2-practice-project.md)
+  (steps 1 to 5), then pages [4](4-existing-project.md), [5](5-worked-example.md) and [6](6-good-habits.md).
+- **Track 2, build DVC pipelines:** this page, the [practice project](2-practice-project.md), then
+  pages [3](3-your-own-project.md) and [6](6-good-habits.md).
 
-**Before you start:** do steps 1 to 6 of [Setup](setup.md). New to git? Also read
-[Git and uv basics](git-and-uv-basics.md).
-
-**Used DVC before?** Skim this page and go to the [practice project](2-practice-project.md).
+> **Used DVC before?** Skim this page and go to the [practice project](2-practice-project.md).
 
 ## The five ideas behind DVC
 
@@ -78,6 +80,13 @@ flowchart LR
 
 That second picture is the whole trick. DVC reruns a stage only when something it reads has
 changed, and it knows what changed because it compares hashes.
+
+## In short
+
+- **git keeps the small files** (code, settings, receipts), **DVC storage keeps the data**.
+- **A hash** is a fingerprint of a file's content: if one byte changes, the hash changes.
+- **`dvc.yaml` is the recipe**, the list of stages. **`dvc.lock` is the receipt**: the hashes of what each run used and produced.
+- **`dvc repro` reruns a stage only when something it reads has changed.**
 
 ---
 
