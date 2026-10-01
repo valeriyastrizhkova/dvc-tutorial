@@ -1,0 +1,12 @@
+# The settings of the model. Each experiment changes one or more of them:
+#   uv run dvc exp run -S model.lag=2
+
+data:
+  start_year: 2000
+  end_year: 2024
+
+model:
+  features: [gdp_growth, debt_ratio, governance]   # the drivers of the score
+  lag: 1                                           # years between the drivers and the score
+  squares: []                                      # drivers to add as squared terms, e.g. [debt_ratio]
+  country_effects: false                           # true: a separate level for each country

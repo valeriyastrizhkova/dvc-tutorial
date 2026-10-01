@@ -1,13 +1,40 @@
-[Home](../README.md) › Page 2 of 4
+[Home](../README.md) › Both tracks › Page 2
 
 # 2. Practice project
 
+> **For you if** you've read [page 1](1-how-dvc-works.md), on either track. You'll do everything on a small, invented project on your laptop, so nothing can break.
+>
+> **You'll learn** to version data, go back in time, share data with a colleague, and (track 2) build a pipeline with settings and metrics.
+>
+> **Time:** about 30 minutes for steps 1 to 5 (track 1), about 1 hour for everything (track 2).
+>
+> **Before this page:** [page 1](1-how-dvc-works.md) and [Setup](setup.md).
+
+**How to use this page:**
+
+> **Track 1, clean up an existing project:** do steps 1 to 5. They teach how DVC versions data,
+> which is what you need first. A box after step 5 sends you on to page 4.
+>
 > **Good at git?** Steps 1, 2 and 5 are routine for you: skim them.
 >
 > **Used DVC before?** Skim everything, but do [Step 8](#step-8--change-a-setting-and-watch-what-reruns)
 > and the [exercises](#exercises): they show behaviour people often get wrong.
 >
 > **New to git?** Do every step, in order. Type the commands yourself rather than copying them.
+
+**On this page:**
+
+- [Step 1 – Copy the practice project and install DVC](#step-1--copy-the-practice-project-and-install-dvc)
+- [Step 2 – Start git and DVC](#step-2--start-git-and-dvc)
+- [Step 3 – Put the first version of the data under DVC](#step-3--put-the-first-version-of-the-data-under-dvc)
+- [Step 4 – Set up shared storage and push](#step-4--set-up-shared-storage-and-push)
+- [Step 5 – A new data version, and travelling back in time](#step-5--a-new-data-version-and-travelling-back-in-time)
+- [Step 6 – Your first pipeline stage](#step-6--your-first-pipeline-stage)
+- [Step 7 – A pipeline with settings and metrics](#step-7--a-pipeline-with-settings-and-metrics)
+- [Step 8 – Change a setting and watch what reruns](#step-8--change-a-setting-and-watch-what-reruns)
+- [Step 9 – Try an idea on a branch](#step-9--try-an-idea-on-a-branch)
+- [Step 10 – Be your own colleague](#step-10--be-your-own-colleague)
+- [Exercises](#exercises)
 
 We will build a small version of what a real risk pipeline does: take market prices, compute a
 portfolio's risk, and run a carbon-price stress test on company profits. Everything runs on your
@@ -298,6 +325,11 @@ M       data\prices.csv
 
 > **Remember the pair:** `git checkout` moves the pointers, `dvc checkout` moves the data to match.
 > Every time you switch commits or branches, run `dvc checkout` afterwards.
+
+> **Track 1, clean up an existing project:** you've learned what you need here. Go on to
+> **[page 4: Bring an existing project into git and DVC →](4-existing-project.md)**
+>
+> **Track 2, build DVC pipelines:** carry on with step 6.
 
 ## Step 6 – Your first pipeline stage
 
@@ -729,6 +761,13 @@ It reports that the output of `returns` was modified. Never keep hand edits to o
 recomputes it.
 </details>
 
+## In short
+
+- **`dvc add`** versions a data file. git keeps only a small pointer file (`.dvc`) with its hash.
+- **`dvc push` and `dvc pull`** share data through storage. **`git checkout` then `dvc checkout`** takes you to any past version.
+- **A stage** lists what it reads (`deps`), its settings (`params`) and what it writes (`outs`, `metrics`). `dvc repro` reruns only what changed.
+- **`dvc params diff` and `dvc metrics diff`** show what a change did, between commits or branches.
+
 ---
 
-← [Previous: How DVC works](1-how-dvc-works.md) · [Next: DVC in your own project](3-your-own-project.md) →
+← [Previous: How DVC works](1-how-dvc-works.md) · [Next on track 1: Bring an existing project into git and DVC](4-existing-project.md) → · [Next on track 2: DVC in your own project](3-your-own-project.md) →
