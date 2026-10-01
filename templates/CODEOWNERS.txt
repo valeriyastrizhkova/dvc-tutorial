@@ -1,0 +1,14 @@
+# Copy to .github/CODEOWNERS. Replace the names with your colleagues' GitHub user names.
+# A pull request that changes a file below automatically asks its owners for a review.
+# The last matching line wins, so put the general rules first.
+
+*                       @team-lead
+
+/scripts/01_macro/         @alice
+/scripts/02_credit_scores/ @bruno
+/scripts/03_loan_pricing/  @chloe
+
+# Files that connect the parts: every owner reviews changes to them
+/dvc.yaml               @alice @bruno @chloe
+/docs/handoffs.md       @alice @bruno @chloe
+/check_handoff.py       @alice @bruno @chloe

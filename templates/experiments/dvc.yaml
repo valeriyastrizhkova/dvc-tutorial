@@ -1,0 +1,14 @@
+stages:
+  fit:
+    cmd: python score_model.py
+    deps:
+    - score_model.py
+    - data/panel.csv
+    params:
+    - data
+    - model
+    outs:
+    - outputs/coefficients.csv
+    metrics:
+    - metrics/model.json:
+        cache: false

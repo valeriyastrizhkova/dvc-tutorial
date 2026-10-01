@@ -19,6 +19,41 @@
 | Make data match the current commit | `uv run dvc checkout` |
 | Download one file at one version | `uv run dvc get <repo> <path> --rev <tag or commit>` |
 
+### Bring an existing project in, and work with branches
+
+| Task | Command |
+|---|---|
+| Create the standard folders | `mkdir scripts, data\raw, data\reference, outputs, metrics, docs` |
+| Record the Python version and packages | `uv init --bare`, `uv python pin <version>`, `uv add <packages>` |
+| Version a whole data folder | `uv run dvc add data/raw` (again after any change in it) |
+| Start a piece of work | `git switch main`, `git pull`, `git switch -c <short-name>` |
+| Share the branch | `git push -u origin <short-name>`, then open a pull request on GitHub |
+| After the merge | `git switch main`, `git pull` |
+| Tag a delivered version | `git tag <name>`, `git push origin <name>` |
+
+### Experiments
+
+| Task | Command |
+|---|---|
+| Queue an experiment with other settings | `uv run dvc exp run --queue -n <name> -S <section.key>=<value>` |
+| Run all queued experiments | `uv run dvc exp run --run-all` |
+| Compare experiments | `uv run dvc exp show --only-changed` |
+| What changed between two experiments | `uv run dvc exp diff <name> <name>` |
+| Bring an experiment into your folder | `uv run dvc exp apply <name>` |
+| Turn the winner into a branch | `uv run dvc exp branch <name> <branch>` |
+| Share an experiment | `uv run dvc exp push origin <name>`, `uv run dvc exp pull origin <name>` |
+| Remove experiments | `uv run dvc exp remove <name>`, or `-A` for all |
+
+### Several stages and owners
+
+| Task | Command |
+|---|---|
+| Bring one stage up to date (and what it needs) | `uv run dvc repro <stage>` |
+| Get one stage's results without rerunning it | `uv run dvc pull <stage>` |
+| What would run | `uv run dvc repro --dry` |
+| Check a hand-off file | `uv run python check_handoff.py <file>` |
+| Check that `.env` is ignored | `git check-ignore -v .env` |
+
 ### Setting up storage
 
 | Task | Command |
@@ -41,3 +76,4 @@
 
 ---
 
+← [Back to the start page](../README.md)
